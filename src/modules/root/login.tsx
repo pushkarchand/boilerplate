@@ -74,9 +74,6 @@ export default function SignIn() {
         const url= `ValidateUserLogin?email=${emailId}&password=${password}`;
         const response= await login(url);
         localStorage.setItem('accessToken',response.token);
-        localStorage.setItem('userId',response.userId);
-        localStorage.setItem('role',response.roleType);
-        localStorage.setItem('userCode',response.userCode);
         context.dispatch(setIsAuthenticated(true));
         history.push('/')
         context.dispatch(setIsLoading(false));
