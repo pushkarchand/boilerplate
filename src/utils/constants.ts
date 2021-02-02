@@ -1,0 +1,22 @@
+export const routes=[
+    {
+        name:'teammates',
+        path:'/teammates',
+    },
+    {
+        name:'Companies',
+        path:'/teammates',
+    },
+    {
+        name:'Projects',
+        path:'/teammates',
+    },
+    {
+        name:'Roles',
+        path:'/teammates',
+    },
+    {
+        name:'Forms',
+        path:'/forms',
+    }
+]
