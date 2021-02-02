@@ -1,5 +1,5 @@
 import React from "react";
-import {Route } from "react-router-dom";
+import {Route , Switch} from "react-router-dom";
 import Landing from './landing';
 import Tempate from './template'
 import Reactive from "./reactive";
@@ -8,8 +8,8 @@ export default function FormsLanding() {
         <>
         <h3>Forms</h3>
         <Landing/>
-            <Route  path={'/forms/template'} component={Tempate} />
-            <Route  path={'/forms/reactive'} component={Reactive} />
+        <Route  path={'/forms/template'} component={Tempate} />
+        <Route  path={'/forms/reactive'} component={Reactive} />
     </>
     )
 }

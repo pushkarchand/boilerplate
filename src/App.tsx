@@ -3,9 +3,8 @@ import React, { Suspense, lazy, useReducer, useEffect } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
-import Header from './modules/root/header';
 import Fallback from "./modules/root/fallback";
-import Notify,{AlertTypes} from './services/notify';
+import Notify from './services/notify';
 import {  ThemeProvider } from '@material-ui/core/styles';
 import {theme} from './utils/theme';
 import Login from './modules/root/login';
@@ -14,15 +13,13 @@ import { stateContext } from './context/authentication/authContext';
 import { initialState, stateReducer } from './context/authentication/reducer';
 import { CircularProgress } from "@material-ui/core";
 
-const Forms = lazy(() => import("./modules/forms/inxdex"));
-const Document = lazy(() => import("./modules/document/index"));
+import Onx from "./modules/onx/index";
 
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState);
   
   useEffect(() => {
     Notify.notifications.subscribe((alert: any) => alert instanceof Function && alert());
-    Notify.sendNotification("Hello, Everyone",AlertTypes.success)
   }, [])
 
   return (
@@ -35,7 +32,7 @@ function App() {
           <Suspense fallback={<Fallback />}>
             <Switch>
                   <Route exact path="/" component={Forms} />
-                  <Route path="/document" component={Document} />
+                  <Route path="/ONX" component={ONX} />
             </Switch>
           </Suspense>
         </div>
@@ -47,13 +44,7 @@ function App() {
           </Switch>
         )} */}
          <div className="container">
-          <Header/>
-          <Suspense fallback={<Fallback />}>
-            <Switch>
-                  <Route exact path="/" component={Document} />
-                  <Route path="/forms" component={Forms} />
-            </Switch>
-          </Suspense>
+          <Onx/>
         </div>
       </Router>
       <ToastContainer autoClose={5000} />
