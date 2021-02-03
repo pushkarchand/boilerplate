@@ -1,5 +1,4 @@
-import React from "react";
-import {Route , Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Landing from './landing';
 import Tempate from './template'
 import Reactive from "./reactive";

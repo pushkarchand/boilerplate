@@ -1,11 +1,14 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { Suspense, lazy, useReducer, useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Heading from "../../components/header";
 import Sidebar from "../../components/sidebar";
 
 import Fallback from "../root/fallback";
-const Forms = lazy(() => import("../forms/inxdex"));
+const Forms = lazy(() => import("../forms/index"));
+const Companies = lazy(() => import("../companies/index"));
+const Projects = lazy(() => import("../projects/index"));
+const Roles = lazy(() => import("../roles/index"));
 const Teammates =  lazy(() => import("../teammates/index"));
 const useStyles = makeStyles((theme) => ({
     landing:{
@@ -32,8 +35,9 @@ const useStyles = makeStyles((theme) => ({
     },
     main:{
         flexBasis: '90%',
+        height: '100%',
         display: 'flex',
-        justifyContent: 'space-around',
+        flexDirection: 'column',
     }
 }))
 
@@ -52,9 +56,12 @@ export default function FormsLanding() {
                 <div className={classes.main}>
                     <Suspense fallback={<Fallback />}>
                         <Switch>
-                            <Route exact path="/teammates" component={Teammates} />
-                            <Route exact path="/forms" component={Forms} />
-                            <Route exact path="/" component={Teammates} />
+                            <Route path="/teammates" component={Teammates} />
+                            <Route path="/companies" component={Companies} />
+                            <Route path="/projects" component={Projects} />
+                            <Route path="/roles" component={Roles} />
+                            <Route path="/forms" component={Forms} />
+                            <Route path="/" component={Teammates} />
                         </Switch>
                     </Suspense>
                 </div>

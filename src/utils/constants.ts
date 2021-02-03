@@ -1,22 +1,22 @@
 export const routes=[
     {
         name:'teammates',
-        path:'/teammates',
+        path:'/teammates'
     },
     {
         name:'Companies',
-        path:'/teammates',
+        path:'/companies'
     },
     {
         name:'Projects',
-        path:'/teammates',
+        path:'/projects'
     },
     {
         name:'Roles',
-        path:'/teammates',
+        path:'/roles'
     },
     {
         name:'Forms',
-        path:'/forms',
+        path:'/forms'
     }
 ]
