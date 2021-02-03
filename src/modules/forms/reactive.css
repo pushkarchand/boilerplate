@@ -1,0 +1,105 @@
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 500px;
+  }
+  
+  .p {
+    color: #bf1650;
+    text-align: center;
+  }
+  
+  select,
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid rgb(22, 22, 22);
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  .label,
+  section > label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    margin-bottom: 13px;
+    margin-top: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 200;
+  }
+  
+  input[type="submit"],
+  .button {
+    background: #fff;
+    color: #ddd;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+    display: block;
+    appearance: none;
+    border-radius: 4px;
+    width: 100%;
+    font-weight: lighter;
+    border: 1px solid #c2c2c2;
+  }
+
+  .button {
+    background: #fff;
+    color: #ddd;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 20px;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 100;
+    letter-spacing: 10px;
+    display: block;
+    appearance: none;
+    border-radius: 4px;
+    width: 100%;
+    font-weight: lighter;
+    border: 1px solid #c2c2c2;
+  }
+  
+  .buttonBlack {
+    background: black;
+    border: 1px solid #c2c2c2;
+  }
+  
+  
+  .counter {
+    font-weight: 400;
+    background: white;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 4px;
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    z-index: 9999999;
+  }
+  
+  button[type="button"] {
+    padding: 5px;
+    background: #516391;
+    color: white;
+    letter-spacing: 0px;
+    text-transform: none;
+    padding: 10px;
+    letter-spacing: 2px;
+  }
+  
+  button[type="button"]:hover {
+    background: #bf1650;
+    color: white;
+  }
+  
