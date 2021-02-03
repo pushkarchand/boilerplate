@@ -29,12 +29,12 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '4px',
     },
     sidebar:{
-        flexBasis: '10%',
+        flexBasis: '8%',
         display: 'flex',
         justifyContent: 'space-around',
     },
     main:{
-        flexBasis: '90%',
+        flexBasis: '92%',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',

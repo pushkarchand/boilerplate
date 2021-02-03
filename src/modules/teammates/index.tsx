@@ -1,5 +1,5 @@
 import React from 'react';
-export default function DocumentLanding() {
+export default function TeammatesLanding() {
     return (
         <React.Fragment>
             <h3>Teammates</h3>

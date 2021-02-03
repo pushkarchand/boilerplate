@@ -1,6 +1,6 @@
 export const routes=[
     {
-        name:'teammates',
+        name:'Teammates',
         path:'/teammates'
     },
     {
