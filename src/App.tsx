@@ -13,7 +13,7 @@ import { stateContext } from './context/authentication/authContext';
 import { initialState, stateReducer } from './context/authentication/reducer';
 import { CircularProgress } from "@material-ui/core";
 
-import Onx from "./modules/onx/index";
+import Onx from "./modules/root/index";
 
 function App() {
   const [state, dispatch] = useReducer(stateReducer, initialState);

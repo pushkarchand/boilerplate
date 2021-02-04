@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Heading from "../../components/header";
 import Sidebar from "../../components/sidebar";
 
-import Fallback from "../root/fallback";
+import Fallback from "./fallback";
 const Forms = lazy(() => import("../forms/index"));
 const Companies = lazy(() => import("../companies/index"));
 const Projects = lazy(() => import("../projects/index"));
