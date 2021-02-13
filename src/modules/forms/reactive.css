@@ -17,8 +17,12 @@ form {
     border-radius: 4px;
     border: 1px solid rgb(22, 22, 22);
     padding: 10px 15px;
-    margin-bottom: 15px;
+    margin-bottom: 0;
     font-size: 14px;
+  }
+
+  .formItem{
+    margin-bottom: 15px;
   }
   
   .label,
@@ -101,5 +105,10 @@ form {
   button[type="button"]:hover {
     background: #bf1650;
     color: white;
+  }
+
+  .errorMessage{
+    color:red;
+    font-size:10px
   }
   

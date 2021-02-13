@@ -12,7 +12,6 @@ import signup from './modules/root/register';
 import { stateContext } from './context/authentication/authContext';
 import { initialState, stateReducer } from './context/authentication/reducer';
 import { CircularProgress } from "@material-ui/core";
-
 import Onx from "./modules/root/index";
 
 function App() {
