@@ -5,6 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {client} from './services/graphql';
 import {ApolloProvider} from "@apollo/client";
+//import './assets/creative-tim/material-dashboard.scss';
+import './assets/onx/theme.scss';
 ReactDOM.render(
   <React.StrictMode>
      <ApolloProvider client={client}>

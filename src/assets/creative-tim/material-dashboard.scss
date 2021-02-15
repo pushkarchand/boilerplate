@@ -1,0 +1,129 @@
+/*!
+
+ =========================================================
+ * Material Dashboard PRO Angular - v2.5.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/material-dashboard-pro-angular2
+ * Copyright 2018 Creative Tim (https://www.creative-tim.com)
+
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+
+
+// Custom Theming for Angular Material
+
+// For more information: https://material.angular.io/guide/theming
+
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+$theming-material-components-primary: mat-palette($mat-indigo);
+$theming-material-components-accent: mat-palette($mat-light-blue, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+
+$theming-material-components-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+
+$theming-material-components-theme: mat-light-theme(
+  $theming-material-components-primary,
+  $theming-material-components-accent,
+  $theming-material-components-warn
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+@include angular-material-theme($theming-material-components-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+
+//  @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+ @import "core/variables";
+ @import "core/mixins";
+ @import "~bootstrap/scss/bootstrap";
+ @import "core/reboot";
+
+// Core Components
+@import "core/layout";
+@import "core/buttons";
+@import "core/checkboxes";
+@import "dashboard/cards";
+@import "core/custom-forms";
+@import "core/switches";
+@import "core/example-pages";
+@import "core/radios";
+@import "core/carousel";
+@import "dashboard/forms";
+@import "core/input-group";
+@import "core/list-group";
+@import "core/nav";
+@import "core/images";
+@import "dashboard/navbar";
+@import "core/badges";
+@import "dashboard/alerts";
+@import "core/pagination";
+@import "core/pills";
+@import "core/info-areas";
+@import "core/type";
+@import "core/tabs";
+@import "core/footers";
+@import "core/tooltip";
+@import "core/popover";
+@import "core/modal";
+@import "core/dropdown";
+@import "core/headers";
+@import "core/drawer";
+@import "core/progress";
+@import "core/togglebutton";
+@import "core/ripples";
+@import "dashboard/rtl";
+@import "dashboard/sidebar-and-main-panel";
+@import "dashboard/timeline";
+@import "dashboard/fixed-plugin";
+@import "dashboard/tables";
+@import "dashboard/misc";
+@import "dashboard/pages";
+
+ // Components for PRO
+ @import "dashboard/social-buttons";
+ @import "dashboard/fileupload";
+
+ //plugin css
+ @import "plugins/plugin-nouislider";
+ @import "plugins/animate";
+ @import "plugins/sweetalert2";
+ // @import "plugins/datatables.net";
+ @import "plugins/jquery.jvectormap";
+ @import "plugins/plugin-datetime-picker";
+ @import "plugins/fullcalendar";
+ @import "plugins/wizard-card";
+ @import "plugins/chartist";
+ @import "~chartist/dist/scss/chartist";
+ @import "plugins/select-bootstrap";
+ @import "plugins/perfect-scrollbar";
+ @import "plugins/plugin-tagsinput";
+
+
+
+@import "dashboard/responsive";

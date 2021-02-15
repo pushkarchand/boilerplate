@@ -1,0 +1,262 @@
+@import "./variable";
+
+*,
+*:before,
+*:after {
+  @include prefix(box-sizing, border-box, webkit moz);
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  background: $background-color;
+  font-family: $font-family;
+  font-size: 0.875rem;
+  letter-spacing: 0.25px;
+}
+
+/* ********************** input forms starts here ***************************** */
+.onxFloat {
+  position: relative;
+  margin-bottom: 20px;
+
+  &__input,
+  &__select {
+    font-size: 0.875rem;
+    padding: 15px 35px 0px 15px;
+    display: block;
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    border: 1px solid $onx-input-border;
+    border-radius: 3px;
+
+    &--success {
+      border: 1px solid $onx-success !important;
+    }
+
+    &--warn {
+      border: 1px solid $onx-warn  !important;
+    }
+  }
+
+  &__input-logo {
+    position: absolute;
+    top: 17px;
+    right: 10px;
+
+    img {
+      height: 24px;
+    }
+
+    .form-success{
+      height: 13px;
+    }
+  }
+
+  // &__input:focus,
+  // &__select:focus {
+  //   outline-color: $onx-light-grey !important;
+  // }
+
+  &__labelText {
+    color: $onx-label;
+    font-size: 0.875rem;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 15px;
+    top: 17px;
+    @include prefix(transition, 0.2s ease all, webkit moz);
+  }
+
+  &__error-one {
+    position: absolute;
+    top: 55px;
+    left: 4px;
+    font-size: 11px;
+    color: $onx-warn;
+    line-height: 0.875rem;
+  }
+
+  &__input:focus ~ &__labelText,
+  &__input:not(:placeholder-shown) ~ &__labelText {
+    top: 5px;
+    font-size: 12px;
+    color: $onx-label;
+  }
+
+  &__input:-webkit-autofill ~ &__labelText {
+    top: 5px;
+    font-size: 12px;
+    color: $onx-label;
+  }
+
+  &__select:focus ~ &__labelText,
+  &__select:not([value=""]):valid ~ &__labelText {
+    top: 5px;
+    font-size: 12px;
+    color: $onx-label;
+  }
+
+  &__textarea {
+    min-height: 30px;
+    max-height: 260px;
+    overflow: hidden;
+    overflow-x: hidden;
+    padding: 20px 15px 0px 15px;
+  }
+
+  &__anchor-link {
+    color: $onx-warn;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+/* ********************** input forms ends here ***************************** */
+
+/* ********************* button styles starts from here ************************ */
+
+.btnOnx,
+.btnOnx-large,
+.btnOnx-md,
+.btnOnx-small,
+.btnOnx-secondary {
+  text-decoration: none;
+  font-weight: 400;
+  color: $onx-white;
+  background-color: $onx-primary;
+  text-align: center;
+  letter-spacing: 0.5px;
+  -webkit-transition: background-color 0.2s ease-out;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.btnOnx,
+.btnOnx-large,
+.btnOnx-small,
+.btnOnx-md,
+.btnOnx-flat,
+.btnOnx-secondary {
+  border: none;
+  border-radius: 5px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 16px;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btnOnx,
+.btnOnx-large,
+.btnOnx-small,
+.btnOnx-md,
+.btnOnx-floating,
+.btnOnx-large,
+.btnOnx-small,
+.btnOnx-flat,
+.btnOnx-secondary {
+  font-size: 0.875rem;
+  outline: 0;
+}
+
+.btnOnx-small {
+  height: 32.4px;
+  line-height: 31px !important;
+  font-size: 13px;
+}
+
+.btnOnx-md {
+  height: 44px;
+  line-height: 44px;
+  font-size: 0.875rem;
+}
+
+.btnOnx-large {
+  height: 54px;
+  line-height: 54px;
+  font-size: 15px;
+  padding: 0 28px;
+}
+
+.btnOnx:hover,
+.btnOnx-large:hover,
+.btnOnx-small:hover {
+  background-color: $onx-primary;
+}
+
+.btnOnx:focus,
+.btnOnx-large:focus,
+.btnOnx-small:focus,
+.btnOnx-floating:focus {
+  background-color: $onx-dark-grey;
+}
+
+.btnOnx:disabled,
+.btnOnx-secondary:disabled {
+  pointer-events: none;
+  cursor: default;
+  color: $onx-primary;
+  background-color: $onx-white;
+  border: 2px solid $onx-primary;
+  opacity: 0.6;
+}
+
+/* secondary button - white bg color */
+
+.btnOnx-secondary {
+  color: $onx-black;
+  background-color: $onx-white;
+  border: 1px solid $onx-primary;
+}
+
+.btnOnx-secondary:hover {
+  background-color: $onx-white;
+}
+
+.btnOnx-secondary:focus {
+  background-color: $onx-white;
+  border: 1px solid $onx-dark-grey;
+}
+
+/* ******************* button styles ends here *********************** */
+
+/* ****************** ngform validation css starts here*********************** */
+
+.ng-touched.ng-invalid {
+  border-color: $onx-warn;
+}
+
+/* Show red border when stuff has been typed in, but its invalid */
+.ng-dirty.ng-invalid {
+  border-color: $onx-warn;
+}
+
+/*Show normal border color when typed in for the first time*/
+.ng-untouched.ng-invalid {
+  border-color: $onx-input-border;
+}
+
+.ng-touched.ng-valid {
+  border-color: $onx-success;
+}
+
+.ng-submitted input.ng-invalid {
+  border-color: $onx-warn;
+}
+
+.onxFloat__input:focus.ng-untouched {
+  border-color: $onx-black;
+}
+
+/* ******************** ngform validation css ends here ********************** */
+
+/* ******************** remove eye icon from the edge browser ********************** */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}

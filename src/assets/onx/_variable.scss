@@ -1,0 +1,137 @@
+// color variables
+$onx-primary: #808080;
+$onx-dark-blue: #1274d1;
+$onx-light-blue: #007aff; 
+$onx-white: #ffffff;
+$onx-black: #000000;
+$onx-secondary-black: #333333;
+$onx-success: #20bc20;
+$onx-warn: #e8511d;
+$onx-grey: #757575;
+$onx-light-grey: #7b858c;
+$onx-dark-grey: #666666;
+$onx-more-grey: #C4C4C4;
+$onx-greyD: #DDDDDD;
+$onx-light-purple: #636496d4;
+$onx-label: #999999;
+$onx-input-border: #00000047;
+$onx-bgBlur: rgba(0, 0, 0, 0.4);
+$onx-box-shadow: 0px 2px 4px #00000014, 0px 4px 24px #00000014;
+$onx-box-shadow-edit: 0px 14px 26px -12px rgba(102, 102, 102, 0.42),0px 4px 23px rgba(102, 102, 102, 0.12), 0px 8px 10px -5px rgba(102, 102, 102, 0.2) ;
+$onx-card-shadow: 0px 12px 16px rgba(0, 0, 0, 0.04), 0px 4px 56px rgba(0, 0, 0, 0.04);
+$onx-nav-card:0px 2px 4px rgba(0, 0, 0, 0.08), 0px 4px 24px rgba(0, 0, 0, 0.08);
+$onx-user-create-shadow: 0px 2px 4px #00000014, 0px 4px 24px #00000014;
+$background-color: #f7f7f7;
+$onx-white2: #f1f1f1;
+$onx-black-1: #555555;
+
+// font-family
+$font-family: 'Montserrat', sans-serif;
+
+// mixins
+@mixin flexCenter($position) {
+  display: flex;
+  justify-content: $position;
+  align-items: center;
+}
+
+// vendor prefixes
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+// avatars
+@mixin avatar($width, $height) {
+  @include flexCenter(center);
+  width: $width;
+  height: $height;
+  // background: #2a97ff73;
+  border-radius: 50%;
+  margin: 0 auto;
+  cursor: pointer;
+  border: 1px solid $onx-primary;
+  
+  .avatar-icon {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+// success icon animation
+@mixin success-animation() {
+  img {
+    animation: scale 1.5s ease-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: 0s;
+  }
+  
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+    1% {
+      transform: scale(0);
+    }
+    20% {
+      transform: scale(0);
+    }
+    35% {
+      transform: scale(1.4);
+    }
+    40% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15);
+    }
+    65% {
+      transform: scale(1);
+    }
+    90% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin hideInputLabel(){
+  ::ng-deep {
+    .mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float 
+    .mat-form-field-label, .mat-form-field-appearance-legacy.mat-form-field-can-float 
+    .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label{
+      display: none;
+    }
+ }
+}
