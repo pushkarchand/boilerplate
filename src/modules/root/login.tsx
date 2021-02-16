@@ -99,7 +99,7 @@ export default function SignIn() {
       context.dispatch(setIsAuthenticated(true));
       context.dispatch(setIsLoading(false));
       history.push('/');
-      Notification.sendNotification('Loged in successfully',AlertTypes.success);
+      // Notification.sendNotification('Loged in successfully',AlertTypes.success);
     } catch(error){
       logout();
       context.dispatch(setIsLoading(false));
