@@ -193,11 +193,11 @@ export default function SignIn() {
                   </Grid>
                 </Grid>
                 {/* Link to route to signup screen */}
-                <Grid container className={classes.signupmessage} justify="flex-end">
+                {/* <Grid container className={classes.signupmessage} justify="flex-end">
                   <Grid item>
                     <Link className={classes.signup} to="/signup">Create New Account</Link>
                   </Grid>
-                </Grid>
+                </Grid> */}
               </form>
             </div>
           </Container>
