@@ -8,10 +8,14 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import {login} from '../../services/api';
+import {login, postApi} from '../../services/api';
 import {stateContext} from '../../context/authentication/authContext';
 import {setIsAuthenticated, setIsLoading} from '../../context/authentication/action';
 import { useHistory } from "react-router-dom";
+
+import {features} from '../../utils/constants';
+import {decodeToken, setExchangeToken, setToken, logout} from '../../services/authservice';
+import Notification,{ AlertTypes } from "../../services/notify";
 // Styles for the login component
 const useStyles = makeStyles(theme => ({
   "@global": {
@@ -71,13 +75,33 @@ export default function SignIn() {
     e.preventDefault();
     try{
         context.dispatch(setIsLoading(true));
-        const url= `ValidateUserLogin?email=${emailId}&password=${password}`;
-        const response= await login(url);
-        localStorage.setItem('accessToken',response.token);
-        context.dispatch(setIsAuthenticated(true));
-        history.push('/')
-        context.dispatch(setIsLoading(false));
+        const user={
+          email: emailId,
+          password: password
+        };
+        const response= await login(user);
+        setToken(response.data.success);
+        fetchExchangeToken();
     } catch(error){
+      console.log(error);
+      context.dispatch(setIsLoading(false));
+    }
+  }
+
+  const fetchExchangeToken= async ()=>{
+    try{
+      const exchangeToken: ExchangeToken= {
+        tenantId: Number(decodeToken().tenantId),
+        features:[features.PROJECT, features.USER,features.ROLE, features.COMPANY]
+      };
+      const response= await postApi('V1/user/login/exchange',exchangeToken);
+      setExchangeToken(response.success);
+      context.dispatch(setIsAuthenticated(true));
+      context.dispatch(setIsLoading(false));
+      history.push('/');
+      Notification.sendNotification('Loged in successfully',AlertTypes.success);
+    } catch(error){
+      logout();
       context.dispatch(setIsLoading(false));
     }
   }
@@ -179,4 +203,9 @@ export default function SignIn() {
           </Container>
       </React.Fragment>
   );
+}
+
+export interface ExchangeToken{
+  tenantId: number;
+  features: Array<string>;
 }

@@ -1,16 +1,19 @@
-import { gql } from '@apollo/client';
-import {tenantProjectRole} from '../utils/role';
-
-export const enumerateProjects =()=>{
-
-  return gql`
-  query ${tenantProjectRole.viewTenantProjects} {
-    launches {
-      flight_number
-      mission_name
-      launch_date_local
-      launch_success
-    }
-  }
-`;
+export abstract class Project {
+  static modelName = 'project';
+  static insertInputType= 'project_insert_input';
+  static selector = {
+    id: 'id',
+    name: 'name',
+    status: 'status',
+    location: 'location',
+    config: 'config',
+    address: 'address',
+    metrics: 'metrics',
+    userId: 'userId',
+    tenantId: 'tenantId',
+    affectedRows: 'affected_rows'
+  };
+  static relation= {
+    projectAssociation: 'projectAssociation'
+  };
 }

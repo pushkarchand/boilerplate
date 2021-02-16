@@ -1,10 +1,8 @@
 import {IS_AUTHENTICATED,USERNAME, ISLOADING} from './action';
 export const initialState={
-    isAuthenticated:localStorage.getItem('accessToken')?true:false,
+    isAuthenticated:localStorage.getItem('token')?true:false,
     userName:"",
-    isLoading: false,
-    purchasedBook: null,
-    paymentOpen: false
+    isLoading: false
 }
 
 export const stateReducer=(state=initialState,action: any)=>{

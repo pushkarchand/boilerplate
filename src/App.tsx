@@ -25,15 +25,11 @@ function App() {
     <ThemeProvider theme={theme}>
       <stateContext.Provider value={{state:state,dispatch:dispatch}}>
       <Router>
-      {/* {state.isAuthenticated?(
+      {state.isAuthenticated?(
         <div className="container">
-          <Header/>
-          <Suspense fallback={<Fallback />}>
-            <Switch>
-                  <Route exact path="/" component={Forms} />
-                  <Route path="/ONX" component={ONX} />
-            </Switch>
-          </Suspense>
+           <div className="container">
+              <Onx/>
+           </div>
         </div>
         ):(
           <Switch>
@@ -41,10 +37,7 @@ function App() {
               <Route path="/signup" component={signup} />
               <Route path="*" component={Login} />
           </Switch>
-        )} */}
-         <div className="container">
-          <Onx/>
-        </div>
+        )}
       </Router>
       <ToastContainer autoClose={5000} />
       {state.isLoading?(

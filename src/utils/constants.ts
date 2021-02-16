@@ -77,3 +77,10 @@ export const formTemplates=[
         }
     }
 ]
+
+export const features = {
+    PROJECT: 'PROJECT',
+    USER: 'USER',
+    ROLE: 'ROLE',
+    COMPANY: 'COMPANY'
+  };

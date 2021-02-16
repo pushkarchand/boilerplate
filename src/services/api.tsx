@@ -1,17 +1,15 @@
+import {getToken} from './authservice';
 const axios = require('axios');
 const axiosApiInstance = axios.create();
 
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
-  async (config: { headers: { Authorization: string; 'Content-Type': string; 'Access-Control-Allow-Origin': string; "Access-Control-Allow-Credentials": string; "Access-Control-Allow-Methods": string; "Access-Control-Allow-Headers": string; }; }) => {
-    const tokenStr=localStorage.getItem('accessToken');
+  async (config: { headers: { Authorization: string; 'Content-Type': string; 'Access-Control-Allow-Origin': string}; }) => {
+    const tokenStr=getToken();
     config.headers = { 
       'Authorization': `Bearer ${tokenStr}`,
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      "Access-Control-Allow-Credentials": "true",
-      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-      "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+      'Access-Control-Allow-Origin': '*'
     }
     return config;
   },
@@ -26,12 +24,12 @@ axiosApiInstance.interceptors.response.use((response: any) => {
   return response
 }, async function (error: { config: any; response: { status: number; }; }) {
   const originalRequest = error.config;
-  if (error.response.status === 401 && !originalRequest._retry) {
-    originalRequest._retry = true;
-    const access_token = await refreshAccessToken();            
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
-    return axiosApiInstance(originalRequest);
-  }
+  // if (error.response.status === 401 && !originalRequest._retry) {
+    // originalRequest._retry = true;
+    // const access_token = await refreshAccessToken();            
+    // axios.defaults.headers.common['Authorization'] = 'Bearer ' + access_token;
+    // return axiosApiInstance(originalRequest);
+  // }
   return Promise.reject(error);
 });
 
@@ -39,17 +37,9 @@ axiosApiInstance.interceptors.response.use((response: any) => {
  * Method to refetch token on token expiry
  */
 export async function refreshAccessToken(){
-    const email: any= localStorage.getItem('emailId');
-    const pass: any= localStorage.getItem('pass');
-    const url=`ValidateUserLogin?email=${encodeURIComponent(email)}&password=${encodeURIComponent(pass)}`;
-    return axios.get(`${process.env["REACT_APP_BACKEND_API"]}${url}`)
+    return axios.post(`${process.env["REACT_APP_BACKEND_API"]}V1/user/login`)
     .then((response: { data: any; })=>{
         let data = response.data;
-        console.log(data);
-        localStorage.setItem('accessToken',data.token);
-        localStorage.setItem('userId',data.userId);
-        localStorage.setItem('role',data.roleType);
-        localStorage.setItem('userCode',data.userCode);
         return data;
     }).catch((error: string | undefined)=>{
         throw new Error(error);            
@@ -80,7 +70,8 @@ export async function getApi (url: any) {
  */
 export async function postApi (url: any,argBody: any) {
     try{
-        let response = await axiosApiInstance.post(`${process.env["REACT_APP_BACKEND_API"]}${url}`,JSON.stringify(argBody));
+        debugger;
+        let response = await axiosApiInstance.post(`${process.env["REACT_APP_BACKEND_API"]}${url}`,argBody);
         let data =  response.data;
         return data;
     } catch(error){
@@ -89,22 +80,14 @@ export async function postApi (url: any,argBody: any) {
 }
 
 // Method to login user
-export async function login(url: any){
-  return axios.get(`${process.env["REACT_APP_BACKEND_API"]}${url}`,{headers:{
-    'Access-Control-Allow-Origin': '*',
-    "Access-Control-Allow-Credentials": "true",
-    "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-    "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
-  }})
+export async function login(requestBody: any){
+  return axios.post(`${process.env["REACT_APP_BACKEND_API"]}V1/user/login`,requestBody)
     .then((response: { data: any; })=>{
-        let data = response.data;
+        let data = response;
         console.log(data);
-        localStorage.setItem('accessToken',data.token);
-        localStorage.setItem('userId',data.userId);
-        localStorage.setItem('role',data.roleType);
-        localStorage.setItem('userCode',data.userCode);
         return data;
     }).catch((error: string | undefined)=>{
+      console.log(error);
         throw new Error(error);            
     })
 }

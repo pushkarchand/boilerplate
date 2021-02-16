@@ -1,4 +1,5 @@
-
+import {getExchangeToken, logout} from './authservice';
+import Notification,{AlertTypes} from './notify';
 import {
   ApolloClient,
   createHttpLink,
@@ -8,19 +9,19 @@ import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 
 const httpLink = createHttpLink({
-  uri: "https://polar-wildwood-69899.herokuapp.com/graphql", //http link uri
+  uri: process.env["REACT_APP_GRAPHQL_API"], //http link uri
 });
 
 const authLink = setContext((operation, context) => {
   const role = operation?.operationName;
-  const token = "";
+  const token = getExchangeToken();
   if (token === null) {
     return {};
   } else {
     return {
       headers: {
         Authorization: `Bearer ${token}`,
-        // 'x-hasura-role': role //uncomment this 
+        'x-hasura-role': role //uncomment this 
       },
     };
   }
@@ -43,11 +44,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
         case "access-denied":
         case "not-found":
         case "validation-failed": {
-          // show notification
+          Notification.sendNotification('Access denied',AlertTypes.warn);
           break;
         }
         case "invalid-jwt": {
-          // logout and remove jwt token
+          logout();
           break;
         }
       }
