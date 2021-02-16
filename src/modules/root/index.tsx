@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Heading from "../../components/header";
@@ -56,12 +56,14 @@ export default function FormsLanding() {
                 <div className={classes.main}>
                     <Suspense fallback={<Fallback />}>
                         <Switch>
-                            <Route path="/teammates" component={Teammates} />
+                            {/* <Route path="/teammates" component={Teammates} />
                             <Route path="/companies" component={Companies} />
                             <Route path="/projects" component={Projects} />
-                            <Route path="/roles" component={Roles} />
-                            <Route path="/forms" component={Forms} />
-                            <Route path="/" component={Teammates} />
+                            <Route path="/roles" component={Roles} /> */}
+                            <Route path="/rfi" component={Forms} />
+                            <Route path="/">
+                                <Redirect to="/rfi" /> 
+                            </Route>
                         </Switch>
                     </Suspense>
                 </div>

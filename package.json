@@ -22,6 +22,7 @@
     "react-hook-form": "^6.15.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-select": "^4.1.0",
     "react-toastify": "^7.0.0",
     "rxjs": "^6.6.3",
     "sass-loader": "^11.0.1",

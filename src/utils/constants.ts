@@ -1,23 +1,8 @@
 export const routes=[
     {
-        name:'Teammates',
-        path:'/teammates'
-    },
-    {
-        name:'Companies',
-        path:'/companies'
-    },
-    {
-        name:'Projects',
-        path:'/projects'
-    },
-    {
-        name:'Roles',
-        path:'/roles'
-    },
-    {
-        name:'Forms',
-        path:'/forms'
+        name:'RFI',
+        path:'/rfi',
+        routes:['rfi','']
     }
 ];
 
@@ -70,6 +55,16 @@ export const formTemplates=[
         name:'address',
         label: 'Address',
         placeholder: 'Address',
+        defaultValue: 'New',
+        type:'text',
+        validationProps:{
+                required: 'Address is required'
+        }
+    },
+    {
+        name:'phone',
+        label: 'Phone',
+        placeholder: 'phone',
         defaultValue: 'New',
         type:'text',
         validationProps:{

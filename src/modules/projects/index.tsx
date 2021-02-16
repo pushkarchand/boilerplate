@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useQuery } from "@apollo/client";
-import { enumerateProjects } from "../../grqphql-queries/project";
+import { enumerateProjects } from "../../graphql/queries/project";
 import  ProjectItem  from "../../components/projectItem";
 
 export default function ProjectsLanding() {

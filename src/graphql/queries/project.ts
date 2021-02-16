@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
-import {myProjectRole, tenantProjectRole} from '../utils/role';
-import {Project} from '../graphql-models/projects';
-import {getRole} from '../services/permission';
+import {myProjectRole, tenantProjectRole} from '../../utils/role';
+import {Project} from '../models/projects';
+import {getRole} from '../../services/permission';
 
 export const enumerateProjects =(searchText: string = '', offset: number = 0, limit: number = 10000)=>{
 
