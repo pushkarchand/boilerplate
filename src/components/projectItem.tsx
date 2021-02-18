@@ -1,4 +1,4 @@
-
+import './projectItem.scss';
 interface IProps {
     launch: {
       mission_name: string;
@@ -10,14 +10,13 @@ interface IProps {
     project: { id, name },
   }: any) {
     return (
-      <div className="card card-body mb-3">
-        <div className="row">
-          <div className="col-md-9 card-content">
-            <h4>
-               <span>{name}</span>
-            </h4>
-          </div>
+      <div className="projectItem">
+        <div className="projectItem__aviator">
+           
         </div>
+        <div className="projectItem__title">
+           {name}
+           </div>
       </div>
     );
   }

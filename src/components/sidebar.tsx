@@ -53,20 +53,11 @@ export default function Sidebar() {
         history.push(argItem.path);
     }
 
-    const isSelected=(item: any): boolean=>{
-        item.routes.forEach((subItem: string)=>{
-            if(location.pathname.includes(subItem)){
-                return true
-            }
-        })
-        return false;
-    }
-
     return (
         <div className={classes.sidebar}>
             {routes.map(item=>(
                 <div className={location.pathname.includes(item.path)? classes.slectedItem: classes.sidebarItem} key={item.name} onClick={(e)=>navigate(item)}>
-                    <DashboardIcon className={isSelected(item)? classes.selectedicon: classes.icon}/>
+                    <DashboardIcon className={location.pathname.includes(item.path)? classes.selectedicon: classes.icon}/>
                     <p className={location.pathname.includes(item.path)? classes.selectedlabel: classes.label}>
                         {item.name}
                     </p>

@@ -4,21 +4,36 @@ import { useQuery, useLazyQuery } from "@apollo/client";
 import { enumerateCompanies } from "../../graphql/queries/company";
 import {useDebounce} from '../../custom-hooks/useDebounce';
 import {stateContext} from '../../context/authentication/authContext';
-// import {setIsAuthenticated, setIsLoading} from '../../context/authentication/action';
+import {setIsLoading} from '../../context/authentication/action';
+import Notification,{ AlertTypes } from "../../services/notify";
 
 export default function CompaniesLanding() {
     const [name, setname] = useState('');
     const context:any = useContext(stateContext);
     const debounceName = useDebounce(name,1000);
     useEffect(() => {
-        getWeather();
+        getCompanies();
      }, [debounceName]);
 
-     const [getWeather, { data, error }] = useLazyQuery(enumerateCompanies(debounceName),{
+     const [getCompanies, { loading,data, error }] = useLazyQuery(enumerateCompanies(debounceName),{
          fetchPolicy: 'network-only'
      });
-    if (error) console.log(error);
-    if(data) console.log(data);
+
+     useEffect(() => {
+        if (loading){
+           context.dispatch(setIsLoading(true));
+        }
+        if (data){
+            context.dispatch(setIsLoading(false));
+        }
+        if (error){
+            Notification.sendNotification(error,AlertTypes.warn);
+        }
+        return () => {
+          return;
+        }
+      }, [loading, data,error]);
+
 
     const changeInName=(argEvent: any)=>{
         setname(argEvent.target.value);

@@ -1,8 +1,19 @@
 export const routes=[
     {
         name:'RFI',
-        path:'/rfi',
-        routes:['rfi','']
+        path:'/rfi'
+    },
+    {
+        name:'Companies',
+        path:'/companies'
+    },
+    {
+        name:'Projects',
+        path:'/projects'
+    },
+    {
+        name:'Roles',
+        path:'/roles'
     }
 ];
 

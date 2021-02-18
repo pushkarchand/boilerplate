@@ -56,10 +56,10 @@ export default function FormsLanding() {
                 <div className={classes.main}>
                     <Suspense fallback={<Fallback />}>
                         <Switch>
-                            {/* <Route path="/teammates" component={Teammates} />
+                            <Route path="/teammates" component={Teammates} />
                             <Route path="/companies" component={Companies} />
                             <Route path="/projects" component={Projects} />
-                            <Route path="/roles" component={Roles} /> */}
+                            <Route path="/roles" component={Roles} />
                             <Route path="/rfi" component={Forms} />
                             <Route path="/">
                                 <Redirect to="/rfi" /> 
