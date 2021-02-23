@@ -7,7 +7,6 @@ export default function ReactiveForm() {
   const { register, handleSubmit,errors } = useForm();
   const onSubmit = (data: any) =>{
     //  alert(JSON.stringify(data));
-    debugger;
      console.log(errors);
     };
 

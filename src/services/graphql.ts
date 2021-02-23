@@ -21,7 +21,7 @@ const authLink = setContext((operation, context) => {
     return {
       headers: {
         Authorization: `Bearer ${token}`,
-        'x-hasura-role': role //uncomment this 
+        'x-hasura-role': role
       },
     };
   }
