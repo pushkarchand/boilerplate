@@ -4,12 +4,11 @@ const axiosApiInstance = axios.create();
 
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
-  async (config: { headers: { Authorization: string; 'Content-Type': string; 'Access-Control-Allow-Origin': string}; }) => {
+  async (config: { headers: { Authorization: string; 'Content-Type': string;}; }) => {
     const tokenStr=getToken();
     config.headers = { 
       'Authorization': `Bearer ${tokenStr}`,
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json'
     }
     return config;
   },
