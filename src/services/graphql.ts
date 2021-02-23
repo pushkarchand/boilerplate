@@ -39,7 +39,6 @@ const authLink = setContext((operation, context) => {
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    debugger;
     graphQLErrors.map(({ message, locations, extensions }) => {
       switch (extensions?.code) {
         case "access-denied":
