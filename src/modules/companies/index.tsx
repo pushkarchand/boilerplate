@@ -16,7 +16,7 @@ export default function CompaniesLanding() {
      }, [debounceName]);
 
      const [getCompanies, { loading,data, error }] = useLazyQuery(enumerateCompanies(debounceName),{
-         fetchPolicy: 'network-only'
+         fetchPolicy: 'cache-and-network'
      });
 
      useEffect(() => {

@@ -70,7 +70,6 @@ export async function getApi (url: any) {
  */
 export async function postApi (url: any,argBody: any) {
     try{
-        debugger;
         let response = await axiosApiInstance.post(`${process.env["REACT_APP_BACKEND_API"]}${url}`,argBody);
         let data =  response.data;
         return data;
@@ -84,7 +83,6 @@ export async function login(requestBody: any){
   return axios.post(`${process.env["REACT_APP_BACKEND_API"]}V1/user/login`,requestBody)
     .then((response: { data: any; })=>{
         let data = response;
-        console.log(data);
         return data;
     }).catch((error: string | undefined)=>{
       console.log(error);
