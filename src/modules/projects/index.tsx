@@ -20,6 +20,9 @@ export default function ProjectsLanding() {
     fetchPolicy: 'network-only'
 });
 
+  /**
+   * OnInit, OnChange, OnDestroy
+   */
   useEffect(() => {
     query=enumerateProjects(debounceName);
     getProjects();
