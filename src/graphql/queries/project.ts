@@ -4,7 +4,6 @@ import {Project} from '../models/projects';
 import {getRole} from '../../services/permission';
 
 export const enumerateProjects =(searchText: string = '', offset: number = 0, limit: number = 10000)=>{
-
     const role = getRole(myProjectRole.viewMyProjects, tenantProjectRole.viewTenantProjects);
     return gql`
       query ${role} {

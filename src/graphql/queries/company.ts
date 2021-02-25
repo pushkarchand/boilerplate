@@ -4,6 +4,7 @@ import {Company} from '../models/company';
 import {getRole} from '../../services/permission';
 
 export const enumerateCompanies=(searchText: string = '', offset: number = 0, limit: number = 10000)=>{
+  debugger;
  const role = getRole(myCompanyRoles.viewMyCompanies, tenantCompanyRole.viewTenantCompanies);
 return gql`
               query ${role} {

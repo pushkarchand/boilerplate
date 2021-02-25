@@ -7,15 +7,18 @@ import {stateContext} from '../../context/authentication/authContext';
 import {setIsLoading} from '../../context/authentication/action';
 import Notification,{ AlertTypes } from "../../services/notify";
 
+let query=enumerateCompanies('');
+
 export default function CompaniesLanding() {
     const [name, setname] = useState('');
     const context:any = useContext(stateContext);
     const debounceName = useDebounce(name,1000);
     useEffect(() => {
+        query= enumerateCompanies(debounceName);
         getCompanies();
      }, [debounceName]);
 
-     const [getCompanies, { loading,data, error }] = useLazyQuery(enumerateCompanies(debounceName),{
+     const [getCompanies, { loading,data, error }] = useLazyQuery(query,{
          fetchPolicy: 'cache-and-network'
      });
 

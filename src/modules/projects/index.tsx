@@ -9,16 +9,19 @@ import {setIsLoading} from '../../context/authentication/action';
 import Notification,{ AlertTypes } from "../../services/notify";
 import './index.scss';
 
+let query=enumerateProjects('');
+
 export default function ProjectsLanding() {
   const [name, setname] = useState('');
   const debounceName = useDebounce(name,1000);
   const context:any = useContext(stateContext);
-  const [getProjects, { loading,data, error }] = useLazyQuery(enumerateProjects(debounceName),
+  const [getProjects, { loading,data, error }] = useLazyQuery(query,
   {
     fetchPolicy: 'network-only'
 });
 
   useEffect(() => {
+    query=enumerateProjects(debounceName);
     getProjects();
  }, [debounceName]);
 
@@ -38,7 +41,7 @@ export default function ProjectsLanding() {
 }, [loading, data,error]);
 
 
-  const changeInName=(argEvent: any)=>{
+const changeInName=(argEvent: any)=>{
     setname(argEvent.target.value);
 }
 
